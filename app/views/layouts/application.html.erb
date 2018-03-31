@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Develop</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
+        <div class="container">
+          <ul class="nav navbar-nav navbar-right">
+            <% if logged_in? %>
+            <li>
+              <%= link_to lives_index_path do %>
+                <%= image_tag 'icons/home.png', class: 'icon' %>
+              <% end %>
+            </li>
+              <li>
+                <%= link_to favorites_path do %>
+                  <%= image_tag 'icons/mypage.png', class: 'icon' %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to logout_path, method: :delete do %>
+                  <%= image_tag 'icons/logout.png', class: 'icon' %>
+                <% end %>
+              </li>
+            <% else %>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+   <% if flash[:notice] %>
+    <div class="alert alert-success">
+     <%= flash[:notice] %>
+    </div>
+   <% end %>
+   <% if flash[:alert] %>
+    <div class="alert alert-danger">
+     <%= flash[:alert] %>
+    </div>
+   <% end %>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<div class="lives-index-wrapper">
+    <table class="music-infomartion">
+      <caption>Music information
+       <p class="month">This Month</p>
+       <p class="live_music_club">Shibuya-o-East</p>
+      </caption>
+      <tr>
+        <th>day</th>
+        <th>band</th>
+        <th>live title</th>
+        <th>favorite</th>
+      </tr>
+      <% @lives.each do |live| %>
+      <tr>
+        <td>
+          <%= live.day %>
+        </td>
+        <td>
+          <%= live.band %>
+        </td>
+        <td>
+          <%= live.live_title %>
+        </td>
+        <td>
+          <% if !live.favorite_users.include?(current_user) %>
+           <%= link_to favorites_path(live_id: live.id), method: :post do %>
+           <%= image_tag 'icons/heart-white.png', class: 'icon' %>
+           <% end %>
+          <% else %>
+           <%= link_to favorites_cancel_fav_path(live_id: live.id), method: :post do %>
+           <%= image_tag 'icons/heart-black.png', class: 'icon' %>
+           <% end %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>

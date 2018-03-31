@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  year: MyString
+  month: MyString
+  day: MyString
+  band: MyString
+  live_title: MyString
+
+two:
+  year: MyString
+  month: MyString
+  day: MyString
+  band: MyString
+  live_title: MyString
